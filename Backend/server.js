@@ -28,11 +28,17 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: [
+        process.env.BACKEND_URL,
+        process.env.FRONTEND_URL
+    ],
+    credentials: true
+}));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/orgs", orgsRoutes);
-app.use("/api/plans", plansRoutes); 
+app.use("/api/plans", plansRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/admin", adminUsersRoutes); // Admin routes for user management
 app.use("/api/services", serviceRoutes); // Service routes
