@@ -176,7 +176,7 @@ const HistoryCard = ({ item, type }) => {
                                                 ) : (
                                                     <FileText size={14} className="text-blue-300" />
                                                 )}
-                                                <span className="text-xs text-white/60 max-w-[120px] truncate">{att.name}</span>
+                                                <span className="text-xs text-white/60 max-w-30 truncate">{att.name}</span>
                                                 <ExternalLink size={10} className="text-white/30 shrink-0" />
                                             </a>
                                         ))}
@@ -292,7 +292,7 @@ const MyHistoryPage = () => {
     const LABEL_MAP = { all: "submissions", inquiries: "inquiries", bugs: "bug reports", ideas: "feature ideas" };
 
     return (
-        <div className="flex flex-col relative top-15 gap-6" style={{ animation: "fadeUp .4s both", fontFamily: "'serif','fangsong'" }}>
+        <div className="flex flex-col relative top-25 px-6 gap-6" style={{ animation: "fadeUp .4s both", fontFamily: "'serif','fangsong'" }}>
 
             {/* Header */}
             <div className="flex items-start justify-between gap-4 flex-wrap">
@@ -309,7 +309,7 @@ const MyHistoryPage = () => {
                         { label: "Pending", value: pendingResponses, color: "#f97316" },
                         { label: "Resolved", value: resolvedCount, color: "#34d399" },
                     ].map(s => (
-                        <div key={s.label} className="glass rounded-xl px-4 py-2.5 text-center min-w-[70px]">
+                        <div key={s.label} className="glass rounded-xl px-4 py-2.5 text-center min-w-17.5">
                             <div className="text-xl font-extrabold" style={{ color: s.color }}>{s.value}</div>
                             <div className="text-[10px] text-white/35 uppercase tracking-wider">{s.label}</div>
                         </div>
