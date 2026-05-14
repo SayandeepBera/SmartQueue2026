@@ -55,7 +55,7 @@ const StatsRow = () => {
                     return (
                         <div
                             key={i}
-                            className="group relative bg-white/[0.03] backdrop-blur-xl rounded-[24px] p-6 border border-white/10 hover:border-white/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] overflow-hidden"
+                            className="group relative bg-white/3 backdrop-blur-xl rounded-3xl p-6 border border-white/10 hover:border-white/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)] overflow-hidden"
                             style={{ animationDelay: s.d }}
                         >
                             {/* Decorative Background Glow */}
@@ -129,7 +129,7 @@ const StatsRow = () => {
             </div>
 
             {/* Injected CSS for the custom animations */}
-            <style jsx>{`
+            <style>{`
                 @keyframes shine {
                     from { transform: translateX(-100%); }
                     to { transform: translateX(100%); }
