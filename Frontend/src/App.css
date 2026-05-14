@@ -1,0 +1,10 @@
+/* --- Responsive Toast Container --- */
+/* For Mobile / Small Screens (Max-width 480px) */
+@media only screen and (max-width: 480px) {
+  .Toastify__toast-container {
+    width: 90vw !important; /* Forces the toast to take 90% of screen width */
+    left: 5vw !important;   /* Centers it horizontally */
+    margin: 0 auto !important;
+    top: 20px !important;   /* Distance from top */
+  }
+}

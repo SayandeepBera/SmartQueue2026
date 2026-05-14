@@ -1,0 +1,884 @@
+@import "tailwindcss";
+
+/* Global styles */
+html, body {
+  background-color: #121827; /* Match your app background */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Glassmorphism */
+.glass {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+}
+
+/* Hero text animation */
+.hero-word {
+    display: inline-block;
+    animation: heroWord .65s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+@keyframes heroWord {
+    from {
+        opacity: 0;
+        transform: translateY(22px) skewY(3deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) skewY(0);
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg, #00C9A7, #4DA8DA, #a78bfa, #00C9A7);
+    background-size: 300% auto;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 5s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -300% center
+    }
+
+    100% {
+        background-position: 300% center
+    }
+}
+
+/* Stats Row fill bar */
+.fill-bar {
+    animation: fillBar 1.4s .3s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+@keyframes fillBar {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: var(--w);
+    }
+}
+
+/* Services grid */
+.svc-card {
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform .35s cubic-bezier(.34, 1.4, .64, 1), box-shadow .35s, border-color .35s;
+}
+
+.svc-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .35s;
+    background: radial-gradient(ellipse at 30% 30%, var(--cg) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.svc-card:hover {
+    transform: translateY(-7px) scale(1.015);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+}
+
+.svc-card:hover::before {
+    opacity: .16;
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+/* Button animation */
+.btn {
+    cursor: pointer;
+    font-family: serif;
+    transition: all .22s cubic-bezier(.34, 1.4, .64, 1);
+    border: none;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.12);
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+/* Map styles */
+.map-inner-grid>div:last-child {
+    border-left: none !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    max-height: 280px;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: all 0.2s;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #00C9A7;
+}
+
+/* How it works */
+.glow-line {
+    animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        opacity: .45
+    }
+
+    50% {
+        opacity: 1
+    }
+}
+
+@keyframes infiniteGlow {
+    0% {
+        box-shadow: 0 5px 15px -5px var(--glow-color), 0 0 10px 0px var(--glow-dim);
+        transform: scale(1);
+    }
+
+    50% {
+        box-shadow: 0 15px 40px -8px var(--glow-color), 0 0 25px 2px var(--glow-bright);
+        transform: scale(1.03);
+    }
+
+    100% {
+        box-shadow: 0 5px 15px -5px var(--glow-color), 0 0 10px 0px var(--glow-dim);
+        transform: scale(1);
+    }
+}
+
+.glow-card {
+    animation: infiniteGlow 4s ease-in-out infinite;
+}
+
+/* Footer */
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 201, 167, .55)
+    }
+
+    50% {
+        box-shadow: 0 0 0 5px rgba(0, 201, 167, 0)
+    }
+}
+
+.pulse-dot {
+    animation: pulseDot 2s ease infinite;
+}
+
+/* Social icons */
+.social-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    color: white;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+.social-icon:hover {
+    background: rgba(0, 201, 167, 0.12);
+    border-color: rgba(0, 201, 167, 0.3);
+    color: #00C9A7;
+}
+
+.ft-lnk {
+    color: rgba(255, 255, 255, 0.38);
+    font-size: 14px;
+    cursor: pointer;
+    transition: color .2s;
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.ft-lnk:hover {
+    color: #00C9A7;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none !important;
+    }
+
+    .desktop-clock {
+        display: none !important;
+    }
+
+    .hamburger-btn {
+        display: flex !important;
+    }
+
+    .map-inner-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .map-inner-grid>div:last-child {
+        border-left: none !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        max-height: 280px;
+    }
+
+    .step-connector {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-enter {
+        padding: 24px !important;
+    }
+}
+
+/* Booking modal */
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(.91) translateY(18px)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0)
+    }
+}
+
+.modal-enter {
+    animation: modalIn .32s cubic-bezier(.34, 1.4, .64, 1) both;
+}
+
+/* Active Token Panel */
+@keyframes pulseDot {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 201, 167, .55)
+    }
+
+    50% {
+        box-shadow: 0 0 0 5px rgba(0, 201, 167, 0)
+    }
+}
+
+.pulse-dot {
+    animation: pulseDot 2s ease infinite;
+}
+
+@keyframes orbit {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+.orbit {
+    animation: orbit 4s linear infinite;
+}
+
+
+/* ----------- Organization Dashboard Style --------------- */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes slideInL {
+    from {
+        opacity: 0;
+        transform: translateX(-20px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@keyframes slideInR {
+    from {
+        opacity: 0;
+        transform: translateX(20px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -300% center
+    }
+
+    100% {
+        background-position: 300% center
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 201, 167, .5)
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(0, 201, 167, 0)
+    }
+}
+
+@keyframes blobA {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1)
+    }
+
+    50% {
+        transform: translate(30px, -20px) scale(1.05)
+    }
+}
+
+@keyframes blobB {
+
+    0%,
+    100% {
+        transform: translate(0, 0) scale(1)
+    }
+
+    50% {
+        transform: translate(-20px, 18px) scale(1.04)
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes barGrow {
+    from {
+        width: 0
+    }
+
+    to {
+        width: var(--w)
+    }
+}
+
+@keyframes tokenIn {
+    from {
+        opacity: 0;
+        transform: scale(.9) translateY(8px)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0)
+    }
+}
+
+@keyframes toastIn {
+    from {
+        opacity: 0;
+        transform: translateX(60px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+
+@keyframes toastOut {
+    from {
+        opacity: 1;
+        transform: translateX(0)
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(60px)
+    }
+}
+
+.anim-fadeUp {
+    animation: fadeUp .5s both;
+}
+
+.anim-fadeIn {
+    animation: fadeIn .4s both;
+}
+
+.anim-slideInL {
+    animation: slideInL .4s both;
+}
+
+.anim-slideInR {
+    animation: slideInR .4s both;
+}
+
+.anim-modalIn {
+    animation: modalIn .3s cubic-bezier(.34, 1.4, .64, 1) both;
+}
+
+.anim-toastIn {
+    animation: toastIn .35s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+.anim-toastOut {
+    animation: toastOut .3s ease both;
+}
+
+.anim-tokenIn {
+    animation: tokenIn .4s both;
+}
+
+.anim-spin {
+    animation: spin 8s linear infinite;
+}
+
+.anim-blobA {
+    animation: blobA 14s ease-in-out infinite;
+}
+
+.anim-blobB {
+    animation: blobB 18s ease-in-out infinite;
+}
+
+.anim-pulse-dot {
+    animation: pulse 2s ease infinite;
+}
+
+.anim-shimmer {
+    background: linear-gradient(90deg, #00C9A7, #4DA8DA, #a78bfa, #00C9A7);
+    background-size: 300% auto;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+}
+
+.bar-grow {
+    animation: barGrow 1.2s .4s cubic-bezier(.22, 1, .36, 1) both;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 40px #0d1321 inset !important;
+    -webkit-text-fill-color: #E8EDF5 !important;
+}
+
+select option {
+    background: #0d1321;
+    color: #E8EDF5;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 2px;
+}
+
+@media (max-width: 1024px) {
+    .sidebar-desktop {
+        display: none !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .hide-sm {
+        display: none !important;
+    }
+}
+
+/* Custom styles for Org Admin Dashboard */
+@keyframes ping {
+    0% {
+        transform: scale(1);
+        opacity: 0.8
+    }
+
+    100% {
+        transform: scale(2.2);
+        opacity: 0
+    }
+}
+
+.glass-card-amber {
+    background: rgba(251, 191, 36, 0.05);
+    border: 1px solid rgba(251, 191, 36, 0.15);
+    backdrop-filter: blur(24px);
+}
+
+.tbl-row {
+    transition: background .12s;
+}
+
+.tbl-row:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+
+/* Organization Registration Styles */
+@media (max-width:768px) {
+    .split-layout {
+        flex-direction: column !important;
+    }
+
+    .side-panel {
+        display: none !important;
+    }
+
+    .form-panel {
+        min-height: 100vh;
+    }
+}
+
+.step-dot {
+    transition: all .3s cubic-bezier(.34, 1.4, .64, 1);
+}
+
+.step-line {
+    transition: width .6s cubic-bezier(.22, 1, .36, 1);
+}
+
+.btn-primary {
+    transition: all .2s cubic-bezier(.34, 1.4, .64, 1);
+    cursor: pointer;
+    font-family: 'serif', fangsome;
+    background: linear-gradient(135deg, #14b8a6, #0891b2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(20, 184, 166, .38);
+    filter: brightness(1.1);
+}
+
+.btn-primary:active {
+    transform: scale(.97);
+}
+
+.btn-ghost {
+    transition: all .18s ease;
+    cursor: pointer;
+    font-family: 'serif', fangsome;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, .09);
+    border-color: rgba(255, 255, 255, .18);
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-18px)
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+.org-type-card {
+    transition: all .22s cubic-bezier(.34, 1.4, .64, 1);
+    cursor: pointer;
+}
+
+.org-type-card:hover {
+    transform: translateY(-4px) scale(1.02);
+}
+
+.org-type-card.selected {
+    transform: scale(1.04);
+}
+
+/* target the class we added to the input */
+.custom-time-input::-webkit-calendar-picker-indicator {
+    /* 2. Hide the default icon */
+    background: none;
+    display: block;
+
+    /* 3. Make the clickable area cover the entire input */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
+
+/* Phone input style */
+/* Container styling */
+/* 1. The Main Input Container */
+.smart-phone-input {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px;
+    padding: 0 14px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+.smart-phone-input:focus-within {
+    border-color: rgba(20, 184, 166, 0.5) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.1);
+}
+
+/* 2. Style the internal raw input */
+.PhoneInputInput {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    font-size: 14px !important;
+    outline: none !important;
+    padding-left: 10px !important;
+}
+
+/* 3. Style the Country Select (The trigger) */
+.PhoneInputCountrySelect {
+    cursor: pointer;
+    background: transparent;
+    color: white;
+}
+
+/* 4. THE FIX: Custom Scrollbar & Dark Mode for the Option List */
+/* Note: Standard <select> dropdown lists are rendered by the OS. 
+   To force a custom look, we use color-scheme. */
+.smart-phone-input select,
+.modern-select {
+    color-scheme: dark;
+    /* This fixes the white background in many browsers */
+}
+
+/* 5. Limited Height Scrollbar (Works for State and Staff Count) */
+select option {
+    background-color: #0d1520;
+    /* Deep dark blue/slate */
+    color: #cbd5e1;
+    padding: 12px;
+}
+
+/* Custom Webkit Scrollbar */
+select::-webkit-scrollbar {
+    width: 5px;
+}
+
+select::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+select::-webkit-scrollbar-thumb {
+    background: #14b8a6;
+    /* Teal */
+    border-radius: 10px;
+}
+
+@keyframes scaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sonarRipple {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+        border-width: 1px;
+    }
+}
+
+/* Plans & Revenue page styles */
+
+.org-card {
+    transition: all .22s cubic-bezier(.34, 1.4, .64, 1);
+}
+
+.org-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, .45);
+}
+
+@keyframes smoothFloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(3deg);
+    }
+}
+
+@keyframes shadowScale {
+
+    0%,
+    100% {
+        transform: scaleX(1.5);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scaleX(1);
+        opacity: 0.15;
+    }
+}
+
+.animate-smoothFloat {
+    animation: smoothFloat 6s ease-in-out infinite;
+}
+
+.animate-shadowScale {
+    animation: shadowScale 6s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+
+    0%,
+    100% {
+        opacity: 0.1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.2;
+        transform: scale(1.1);
+    }
+}
+
+.animate-pulse-soft {
+    animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/* Custom styles for Support Page */
+.shimmer-text {
+    background: linear-gradient(90deg, #E8EDF5 0%, #00C9A7 30%, #a78bfa 50%, #00C9A7 70%, #E8EDF5 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+}
+
+.search-input:focus {
+    outline: none;
+}
+
+.search-glow {
+    transition: box-shadow .25s;
+}
+
+.search-glow:focus-within {
+    box-shadow: 0 0 0 2px rgba(0, 201, 167, 0.3), 0 8px 32px rgba(0, 201, 167, 0.08);
+    border-color: rgba(0, 201, 167, 0.4) !important;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.tab-btn {
+    transition: all .2s;
+}
+
+.tab-btn.active {
+    background: rgba(0, 201, 167, 0.12);
+    border-color: rgba(0, 201, 167, 0.35) !important;
+    color: #00C9A7 !important;
+}
