@@ -129,13 +129,19 @@ const MyTokensPage = () => {
 
                     <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 relative z-10">
                         <div className="flex-1">
-                            <button
-                                onClick={() => navigate(-1)}
-                                className="group flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-white/30 hover:text-[#845EC2] transition-all duration-300 mb-6"
-                            >
-                                <span className="inline-block transform group-hover:-translate-x-1 transition-transform">←</span>
-                                Back
-                            </button>
+                            <nav className="flex items-center gap-4 pt-6.25 mb-6 anim-fadeUp" style={{ animationDelay: '0s' }}>
+                                <button
+                                    onClick={() => navigate(-1)}
+                                    className="group flex items-center gap-2 text-xs font-bold tracking-widest uppercase transition-all"
+                                    style={{ color: "rgba(255,255,255,0.3)" }}
+                                >
+                                    <span className="flex items-center justify-center w-8 h-8 rounded-full border border-white/5 bg-white/2 group-hover:bg-[#00C9A7]/10 group-hover:border-[#00C9A7]/20 group-hover:text-[#00C9A7] transition-all">
+                                        ←
+                                    </span>
+                                    Back
+                                </button>
+                                <div className="h-4 w-px bg-white/10" />
+                            </nav>
 
                             <h1 className="font-extrabold leading-tight tracking-tight mb-3"
                                 style={{

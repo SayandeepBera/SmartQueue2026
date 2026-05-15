@@ -5,6 +5,7 @@ import { LuUserRound, LuHistory, LuUserRoundPen } from "react-icons/lu";
 import { TbLogout } from "react-icons/tb";
 import { toast } from 'react-toastify';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../assets/Images/SQLogo1.png';
 
 const Navbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -67,12 +68,8 @@ const Navbar = () => {
             <div className="max-w-300 mx-auto px-6 h-20 flex items-center justify-between gap-4">
                 
                 {/* Logo */}
-                <Link to="/" className="flex items-center gap-2.5 shrink-0" onClick={closeMenus}>
-                    <div className="relative w-9 h-9">
-                        <div className="absolute inset-0 rounded-[10px] bg-linear-to-br from-[#00C9A7] to-[#4DA8DA]" />
-                        <div className="relative w-full h-full flex items-center justify-center font-['Space_Grotesk'] font-extrabold text-[18px] text-black">Q</div>
-                    </div>
-                    <span className="text-white font-bold text-[20px] tracking-tight hidden sm:block">SmartQueue</span>
+                <Link to="#" className="flex items-center gap-2.5 shrink-0" onClick={closeMenus}>
+                    <img src={logo} alt="SmartQueue Logo" className="h-11.25 md:h-12.5" />
                 </Link>
 
                 {/* Desktop links */}

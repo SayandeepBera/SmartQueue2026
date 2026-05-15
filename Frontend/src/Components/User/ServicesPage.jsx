@@ -97,7 +97,7 @@ const ServicesPage = () => {
             <RevealSection delay={0}>
                 <header className="relative mb-10 overflow-hidden">
                     {/* 1. Navigation & Breadcrumbs */}
-                    <nav className="flex items-center gap-4 mb-6 anim-fadeUp" style={{ animationDelay: '0s' }}>
+                    <nav className="flex items-center gap-4 mb-6 pt-6.25 anim-fadeUp" style={{ animationDelay: '0s' }}>
                         <button
                             onClick={() => navigate(-1)}
                             className="group flex items-center gap-2 text-xs font-bold tracking-widest uppercase transition-all"
