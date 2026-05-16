@@ -20,7 +20,7 @@ const LocationCard = ({ org, booked }) => {
                 Location Details
             </p>
 
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-6 md:gap-8 lg:gap-10">
                 {/* Org name + address */}
                 <div className="flex gap-3 items-start">
                     <div

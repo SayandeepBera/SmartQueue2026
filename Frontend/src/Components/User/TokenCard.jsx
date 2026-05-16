@@ -1,7 +1,7 @@
 import React from 'react';
 import StatusBadge from './StatusBadge';
 
-const TokenCard = ({ token, onRefresh }) => {
+const TokenCard = ({ token, onRefresh, onClick, isSelected }) => {
     const svc = token.serviceId || {};
     const org = token.orgId || {};
     const color = svc.color || "#00C9A7";
@@ -13,20 +13,33 @@ const TokenCard = ({ token, onRefresh }) => {
 
     return (
         <div
-            className="glass rounded-[20px] p-5 relative overflow-hidden"
+            onClick={onClick}
+            className="glass rounded-[20px] p-5 relative overflow-hidden transition-all duration-200"
             style={{
-                borderColor: `${color}22`,
-                background: active ? `linear-gradient(135deg,${color}08,rgba(255,255,255,0.01))` : undefined,
+                borderColor: isSelected ? `${color}60` : `${color}22`,
+                background: isSelected
+                    ? `linear-gradient(135deg,${color}15,rgba(255,255,255,0.03))`
+                    : active
+                        ? `linear-gradient(135deg,${color}08,rgba(255,255,255,0.01))`
+                        : undefined,
+                cursor: onClick ? "pointer" : "default",
+                boxShadow: isSelected ? `0 0 0 1.5px ${color}40, 0 8px 24px ${color}12` : undefined,
+                transform: isSelected ? "translateY(-2px)" : undefined,
             }}
         >
-            {active && (
+            {/* Selected indicator */}
+            {isSelected && (
+                <div className="absolute top-3 right-3 w-2 h-2 rounded-full" style={{ background: color }} />
+            )}
+
+            {active && !isSelected && (
                 <div className="absolute inset-0 rounded-[20px] pointer-events-none"
                     style={{ boxShadow: `inset 0 0 0 1px ${color}30` }} />
             )}
 
             <div className="flex items-start justify-between gap-3 mb-3">
                 <div className="flex items-center gap-2.5 min-w-0">
-                    <div className="w-10 h-10 rounded-[12px] flex items-center justify-center text-lg shrink-0"
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0"
                         style={{ background: `${color}18`, border: `1.5px solid ${color}30` }}>
                         {svc.icon || "🎛️"}
                     </div>
@@ -37,7 +50,15 @@ const TokenCard = ({ token, onRefresh }) => {
                         <p className="text-xs text-white/40 truncate">{org.orgName || "Organization"}</p>
                     </div>
                 </div>
-                <StatusBadge status={token.status} />
+                <div className="flex items-center gap-2 shrink-0">
+                    {isSelected && (
+                        <span className="text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-lg"
+                            style={{ background: `${color}15`, color, border: `1px solid ${color}30` }}>
+                            Viewing
+                        </span>
+                    )}
+                    <StatusBadge status={token.status} />
+                </div>
             </div>
 
             <div className="flex items-end justify-between gap-3">
@@ -73,10 +94,11 @@ const TokenCard = ({ token, onRefresh }) => {
                     </div>
                     {onRefresh && (
                         <button
-                            onClick={() => onRefresh(token._id)}
+                            onClick={e => { e.stopPropagation(); onRefresh(token._id); }}
                             className="btn px-3 py-1.5 rounded-lg text-xs font-semibold"
-                            style={{ background: `${color}18`, border: `1px solid ${color}30`, color }}
-                        >↻ Refresh</button>
+                            style={{ background: `${color}18`, border: `1px solid ${color}30`, color }}>
+                            ↻ Refresh
+                        </button>
                     )}
                 </div>
             )}
@@ -87,8 +109,16 @@ const TokenCard = ({ token, onRefresh }) => {
                     Served at {new Date(token.servedAt).toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })}
                 </div>
             )}
+
+            {/* Click hint — only shown when clickable and not selected */}
+            {onClick && !isSelected && (
+                <div className="mt-2 text-[10px] text-white/20 flex items-center gap-1"
+                    style={{ fontFamily: "'serif', fangsong" }}>
+                    <span>↗</span> Click to view details
+                </div>
+            )}
         </div>
     );
 };
 
-export default TokenCard
+export default TokenCard;

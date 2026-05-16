@@ -235,6 +235,7 @@ const BottomSection = () => {
                                 <button
                                     key={p}
                                     className="btn px-3.5 py-2 rounded-[10px] text-xs font-semibold"
+                                    onClick={() => toast.info("Mobile app launching soon! Stay tuned 🚀")}
                                     style={{
                                         background: "rgba(255,255,255,0.08)",
                                         border: "1px solid rgba(255,255,255,0.12)",

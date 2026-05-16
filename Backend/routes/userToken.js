@@ -46,7 +46,7 @@ router.get('/', async (req, res) => {
             .skip(skip)
             .limit(parseInt(limit))
             .populate("serviceId", "name counter color icon avgWait")
-            .populate("orgId", "orgName address area city")
+            .populate("orgId", "orgName address area city lat lng")
             .lean();
 
         return res.json({
@@ -67,7 +67,7 @@ router.get('/token-status/:tokenId', async (req, res) => {
     try {
         const token = await QueueToken.findById(req.params.tokenId)
             .populate("serviceId", "name counter color icon avgWait status isActive")
-            .populate("orgId", "orgName address area city")
+            .populate("orgId", "orgName address area city lat lng")
             .lean();
 
         // If token not found or already served/skipped/no_show, return 404
