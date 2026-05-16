@@ -9,6 +9,58 @@ import { useContext } from 'react';
 import AuthContext from '../Context/Authentication/AuthContext';
 import DocsPage from '../Components/DocsPage';
 
+const DEFAULT_FAQS = [
+    {
+        category: "Getting Started",
+        color: "#00C9A7",
+        icon: "🚀",
+        items: [
+            { q: "What is SmartQueue?", a: "SmartQueue is a digital queue management platform that helps organizations manage service counters efficiently and lets users book tokens for services without waiting in physical lines." },
+            { q: "How do I create an account?", a: "Click 'Sign Up' on the home page, enter your name, email, and password, then verify your email via the OTP sent to you. Once verified, you're ready to book tokens or register your organization." },
+            { q: "Is SmartQueue free to use?", a: "SmartQueue is free for individual users booking tokens. Organizations are offered multiple plans (Starter, Pro, Enterprise) based on counter limits and daily token capacity. Visit our Plans page for details." },
+            { q: "Which devices and browsers are supported?", a: "SmartQueue works on any modern browser (Chrome, Firefox, Safari, Edge) on desktop, tablet, and mobile. A dedicated mobile app is on our roadmap." },
+        ]
+    },
+    {
+        category: "Tokens & Booking",
+        color: "#a78bfa",
+        icon: "🎟️",
+        items: [
+            { q: "Do I need an account to book a token?", a: "You need to be logged in to book and track tokens. Creating a free account takes under a minute — just an email and password." },
+            { q: "How do I find services near me?", a: "After logging in, use the 'Browse Services' section on your dashboard. Services are listed by organization and category. You can search by name or filter by service type." },
+            { q: "What happens after I book a token?", a: "You instantly receive a token number and an estimated wait time. You can monitor your position in the queue in real-time from the 'My Tokens' panel on your dashboard." },
+        ]
+    },
+    {
+        category: "Organization Registration",
+        color: "#fbbf24",
+        icon: "🏢",
+        items: [
+            { q: "How do I register my organization on SmartQueue?", a: "Click 'Register Your Organization' on the home page. You'll need your Registration Certificate, GST Certificate, and Owner ID Proof. Our team reviews submissions within 2–3 business days." },
+            { q: "What documents are required for registration?", a: "Required: Registration Certificate, GST Certificate, Owner/Director ID Proof. Optional but recommended: Address Proof and your organization's logo. All documents are securely stored on Cloudinary." },
+            { q: "How long does organization approval take?", a: "Our team typically reviews and approves organization registrations within 2–3 business days. You'll receive a confirmation email once approved, along with your admin credentials." },
+        ]
+    },
+    {
+        category: "Account & Security",
+        color: "#f43f5e",
+        icon: "🔒",
+        items: [
+            { q: "How do I reset my password?", a: "Use the 'Forgot Password' link on the login page. Enter your registered email to receive an OTP, then set a new password. OTPs expire in 10 minutes." },
+            { q: "Is my personal data secure?", a: "Yes. Passwords are hashed with bcrypt before storage. API routes are protected by JWT-based middleware. Activity logs auto-delete after 30 days to minimize data retention." },
+        ]
+    },
+    {
+        category: "Live Support",
+        color: "#60a5fa",
+        icon: "💬",
+        items: [
+            { q: "How can I contact the SmartQueue support team?", a: "You can reach us via the Contact Us tab on this page, or start a live chat. Our team is available Mon–Sat, 9 AM – 6 PM." },
+            { q: "How does live chat work?", a: "Click 'Start Chat' in the Support section. Our support team typically responds within 2 minutes during business hours (Mon–Sat, 9 AM – 6 PM)." },
+        ]
+    },
+];
+
 const USER_FAQS = [
     {
         category: "Tokens & Booking",
@@ -85,10 +137,19 @@ const ORG_FAQS = [
     },
 ];
 
+// Function to get FAQs based on user role
+const getFaqs = (userRole) => {
+    if (userRole === "user") return USER_FAQS;
+ 
+    if (userRole && userRole !== "user") return ORG_FAQS;
+ 
+    return DEFAULT_FAQS;
+};
+
 const Support = () => {
     const { userRole } = useContext(AuthContext);
-    const isUser = userRole === "user";
-    const FAQS = isUser ? USER_FAQS : ORG_FAQS;
+
+    const FAQS = getFaqs(userRole);
 
     const [search, setSearch] = useState("");
     const [openFaqs, setOpenFaqs] = useState({});
