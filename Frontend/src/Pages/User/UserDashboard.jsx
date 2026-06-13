@@ -91,7 +91,7 @@ const UserDashboard = () => {
         if (result.success) {
             setActiveTokens(result.tokens);
         }
-    }, [authToken]);
+    }, [authToken, getMyActiveTokens]);
 
     useEffect(() => {
         fetchMyTokens();

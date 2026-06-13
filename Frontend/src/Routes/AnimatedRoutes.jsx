@@ -21,6 +21,11 @@ import SuspendedUserPage from '../Pages/User/SuspendedUserPage';
 
 const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
 
+// Log an error if the Google Client ID is missing
+if (!GOOGLE_CLIENT_ID) {
+    console.error('Missing VITE_GOOGLE_CLIENT_ID environment variable');
+}
+
 const GoogleAuthWrapper = () => (
     <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
         <AuthPage />
