@@ -125,7 +125,7 @@ const OrgStatusGate = () => {
 
             setLoading(false);
         })();
-    }, [orgId]);
+    }, [orgId, getOrganizationDetails]);
 
     // Handle logout
     const handleLogout = () => {

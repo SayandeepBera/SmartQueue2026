@@ -11,7 +11,7 @@ import UserFilter from '../../Components/Admin/UserFilter';
 // Debounce hook to limit how often we call the API when typing in search
 const useDebounce = (value, delay = 400) => {
     const [debounced, setDebounced] = useState(value);
-    
+
     useEffect(() => {
         const t = setTimeout(() => setDebounced(value), delay);
         return () => clearTimeout(t);
@@ -56,7 +56,7 @@ const UsersPage = ({ onMutate }) => {
     const [search, setSearch] = useState('');
     const [statusF, setStatusF] = useState('all');  // 'all' | 'active' | 'suspended'
     const [page, setPage] = useState(1);
-    const LIMIT = 1000;
+    const LIMIT = 50;
 
     const debouncedSearch = useDebounce(search, 400);
 
@@ -69,7 +69,7 @@ const UsersPage = ({ onMutate }) => {
             page,
             limit: LIMIT,
         });
-        
+
         if (result.success) {
             setUsers(result.users);
             setTotal(result.total);
@@ -113,7 +113,7 @@ const UsersPage = ({ onMutate }) => {
 
     const proceedWithDelete = async (userId, user, label) => {
         setActionId(userId);
-        
+
         const result = await deleteUser(userId);
         setActionId(null);
 
