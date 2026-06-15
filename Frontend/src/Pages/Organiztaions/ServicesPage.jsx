@@ -61,7 +61,6 @@ const ServicesPage = ({ orgId, onAdded, onEdited, onDeleted }) => {
 
     // Delete service with confirmation
     const handleDelete = (svc) => {
-        console.log(svc._id);
         const toastId = toast.info(
             <div className='flex gap-1 items-start'>
                 <div className='text-xl mt-3 shrink-0'>

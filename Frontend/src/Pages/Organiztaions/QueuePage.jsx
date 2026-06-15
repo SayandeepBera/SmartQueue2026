@@ -42,7 +42,7 @@ const QueuePage = ({ services, setServices, activity, onAction, onRefreshService
             const first = services.find(s => s.isActive);
             setSelectedId(first?._id || services[0]._id || null);
         }
-    }, [services]);
+    }, [services, selectedId]);
 
 
     // Fetch queue for selected service, with optional silent mode (no loading spinner) for auto-refresh
