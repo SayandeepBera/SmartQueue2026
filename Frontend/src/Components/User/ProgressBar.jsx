@@ -1,7 +1,8 @@
 import React from 'react'
 
 const ProgressBar = ({ step, total }) => {
-    const pct = ((step - 1) / (total - 1)) * 100;
+    const pct = total <= 1 ? 100 : ((step - 1) / (total - 1)) * 100;
+    
     return (
         <div className="w-full h-0.75 bg-white/6 rounded-full overflow-hidden">
             <div

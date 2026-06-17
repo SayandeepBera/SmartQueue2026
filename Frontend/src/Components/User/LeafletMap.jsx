@@ -9,8 +9,13 @@ const LeafletMap = ({ orgs, center, active, setActive }) => {
     // Keep activeRef in sync for the event listener closure
     useEffect(() => { activeRef.current = active; }, [active]);
 
+    // ── Helper: validate a color string ───────────────────────────────
+    const isValidColor = (color) => /^#[0-9A-Fa-f]{6}$/.test(color);
+
     // ── Helper: build a DivIcon for an org ───────────────────────────────
     const buildIcon = (L, org, isActive) => {
+        const color = isValidColor(org.color) ? org.color : '#00C9A7'; // fallback color
+
         const html = `
             <div style="
                 display: flex;
@@ -25,7 +30,7 @@ const LeafletMap = ({ orgs, center, active, setActive }) => {
                     width: 40px;
                     height: 40px;
                     border-radius: 50%;
-                    border: 2px solid ${org.color};
+                    border: 2px solid ${color};
                     animation: pingRing 1.5s ease-out infinite;
                     pointer-events: none;
                 "></div>` : ''}
@@ -35,9 +40,9 @@ const LeafletMap = ({ orgs, center, active, setActive }) => {
                     gap: 6px;
                     padding: 5px 10px;
                     border-radius: 12px;
-                    border: 2px solid ${org.color};
-                    background: ${isActive ? org.color : '#0D1321'};
-                    box-shadow: 0 4px 16px ${org.color}60;
+                    border: 2px solid ${color};
+                    background: ${isActive ? color : '#0D1321'};
+                    box-shadow: 0 4px 16px ${color}60;
                     transform: ${isActive ? 'scale(1.15) translateY(-5px)' : 'scale(1)'};
                     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
                     white-space: nowrap;
@@ -50,8 +55,8 @@ const LeafletMap = ({ orgs, center, active, setActive }) => {
                 <div style="
                     width: 4px;
                     height: 10px;
-                    background: ${org.color};
-                    box-shadow: 0 0 8px ${org.color};
+                    background: ${color};
+                    box-shadow: 0 0 8px ${color};
                     border-radius: 2px;
                     margin-top: -2px;
                 "></div>
