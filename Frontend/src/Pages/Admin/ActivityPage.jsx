@@ -42,7 +42,7 @@ const ActivityPage = () => {
         }
 
         setLoading(false);
-    }, []);
+    }, [fetchAdminActivity]);
 
     useEffect(() => {
         fetchActivity();

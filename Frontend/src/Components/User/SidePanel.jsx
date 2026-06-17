@@ -27,7 +27,7 @@ const SidePanel = ({ step, formData }) => {
             <div className="relative z-10 flex flex-col h-full px-10 py-14">
                 {/* Headline */}
                 <div className="mb-8" style={{ animation: "fadeUp .7s .1s both" }}>
-                    <h2 className="text-[32px] font-bold leading-tight mb-3 text-white" style={{ fontFamily: "'serif', fangsome" }}>
+                    <h2 className="text-[32px] font-bold leading-tight mb-3 text-white" style={{ fontFamily: "'serif', fangsong" }}>
                         Join the smarter<br />
                         <span className="anim-shimmer">queue revolution</span>
                     </h2>

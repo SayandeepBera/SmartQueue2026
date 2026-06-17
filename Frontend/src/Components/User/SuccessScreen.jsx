@@ -13,7 +13,7 @@ const SuccessScreen = ({ data }) => {
                 <div className="absolute inset-0 rounded-full border border-teal-400/10" style={{ animation: "pulse-ring 2s ease-out .5s infinite" }} />
             </div>
 
-            <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'serif', fangsome" }}>
+            <h2 className="text-3xl font-bold text-white mb-3" style={{ fontFamily: "'serif', fangsong" }}>
                 Application Submitted!
             </h2>
             <p className="text-white/50 text-sm mb-2 max-w-md leading-relaxed">
