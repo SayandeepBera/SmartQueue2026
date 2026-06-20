@@ -13,7 +13,7 @@ const FormSlide5 = ({ data, setData, errors }) => {
         <div className="step-enter">
             <div className="mb-8">
                 <p className="text-[11px] text-teal-400 font-semibold tracking-[2px] uppercase mb-2">Step 5 of 6</p>
-                <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "'serif', fangsome" }}>Choose your plan</h3>
+                <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "'serif', fangsong" }}>Choose your plan</h3>
                 <p className="text-sm text-white/40">Start free, upgrade anytime. No credit card required for Free plan.</p>
             </div>
 
@@ -44,9 +44,9 @@ const FormSlide5 = ({ data, setData, errors }) => {
                             <div className="relative">
                                 <div className="flex items-start justify-between mb-4">
                                     <div>
-                                        <div className="text-base font-bold mb-0.5" style={{ fontFamily: "'serif', fangsome", color: p.color }}>{p.id}</div>
+                                        <div className="text-base font-bold mb-0.5" style={{ fontFamily: "'serif', fangsong", color: p.color }}>{p.id}</div>
                                         <div className="flex items-baseline gap-1">
-                                            <span className="text-2xl font-extrabold text-white" style={{ fontFamily: "'serif', fangsome" }}>
+                                            <span className="text-2xl font-extrabold text-white" style={{ fontFamily: "'serif', fangsong" }}>
                                                 {p.price === 0 ? "Free" : `₹${p.price.toLocaleString()}`}
                                             </span>
                                             {p.period && <span className="text-xs text-white/35">{p.period}</span>}

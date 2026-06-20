@@ -72,10 +72,10 @@ const HeroCard2 = ({ card2Visible, authToken, activeTokens, currentToken, cardTr
                         </div>
 
                         <p className="text-[12px] text-white/40 font-medium truncate mb-1">
-                            {currentToken.serviceIcon} {currentToken.serviceName}
+                            {currentToken.serviceIcon || "🎫"} {currentToken.serviceName || "Unknown Service"}
                         </p>
                         <p className="text-[11px] font-mono font-bold" style={{ color: STATUS_COLORS[currentToken.status] || "#a78bfa" }}>
-                            {currentToken.tokenNumber}
+                            {currentToken.tokenNumber || "N/A"}
                             {currentToken.status === "waiting" && currentToken.estimatedWait > 0
                                 ? ` · ~${currentToken.estimatedWait} min`
                                 : ""}

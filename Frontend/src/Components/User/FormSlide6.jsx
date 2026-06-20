@@ -52,7 +52,7 @@ const FormSlide6 = ({ data, setData, errors }) => {
                         <span className="text-base">{selectedType?.icon}</span>
                         <h4 className="text-xs font-bold text-white/50 uppercase tracking-widest">Organization Identity</h4>
                     </div>
-                    <ReviewRow label="Type" value={`${selectedType?.icon} ${data.orgType}`} />
+                    <ReviewRow label="Type" value={`${selectedType?.icon || "🏢"} ${data.orgType}`} />
                     <ReviewRow label="Full Name" value={data.orgName} />
                     <ReviewRow label="Short Name" value={data.shortName} />
                     <ReviewRow label="Reg. Number" value={data.regNumber} mono />
