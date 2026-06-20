@@ -13,7 +13,7 @@ const FormSlide2 = ({ data, setData, errors }) => {
         <div className="step-enter">
             <div className="mb-8">
                 <p className="text-[11px] text-teal-400 font-semibold tracking-[2px] uppercase mb-2">Step 2 of 6</p>
-                <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "'serif', fangsome" }}>Organization details</h3>
+                <h3 className="text-2xl font-bold text-white mb-2" style={{ fontFamily: "'serif', fangsong" }}>Organization details</h3>
                 <p className="text-sm text-white/40">This information will appear on your public profile.</p>
             </div>
 

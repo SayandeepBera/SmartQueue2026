@@ -85,7 +85,9 @@ const ActiveTokenPanel = ({ booked, onDismiss, staticMode = false }) => {
         : (liveData?.ahead ?? Math.max(0, (booked.position ?? 1) - 1));
 
     const wait = liveData?.wait ?? booked.wait;
-    const pct = Math.max(10, 100 - (aheadCount / Math.max(aheadCount, 1)) * 80);
+    const maxAhead = booked.initialPosition || 20;
+
+    const pct = Math.max(10, Math.min(100, ((maxAhead - aheadCount) / maxAhead) * 100));
 
     const isDone = staticMode && DONE_STATUSES.includes(booked.finalStatus);
 
