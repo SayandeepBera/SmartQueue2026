@@ -22,7 +22,7 @@ const CounterControl = ({ services, onStatusChange, loading }) => {
             {visible.length === 0 ? (
                 <div className="flex flex-col items-center py-6 text-center opacity-30">
                     <BsShopWindow size={32} className="mb-2 text-white" />
-                    <p className="text-xs" style={{ fontFamily: "'serif', 'fangsong'" }}>No active counters</p>
+                    <p className="text-xs" style={{ fontFamily: "'serif', 'fangsong'" }}>No service counters yet</p>
                 </div>
             ) : (
                 <div className="flex flex-col">

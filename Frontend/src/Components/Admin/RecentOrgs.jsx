@@ -84,7 +84,7 @@ const RecentOrgs = ({ orgs }) => {
                                         <div className="h-1 w-24 bg-white/6 rounded-full overflow-hidden">
                                             <div className="bar-grow h-full rounded-full" style={{ "--w": `${pct}%`, background: "#fbbf24" }} />
                                         </div>
-                                        <span className="text-xs text-white/35">0 tokens</span>
+                                        <span className="text-xs text-white/35">{o.tokens || 0} tokens</span>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-2.5 shrink-0">
