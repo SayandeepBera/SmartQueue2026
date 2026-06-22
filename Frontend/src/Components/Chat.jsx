@@ -291,9 +291,6 @@ const Chat = ({ isFloating = true, onClose }) => {
             animate={isFullScreen ? "fullscreen" : "floating"}
             variants={chatVariants}
             transition={{ type: "spring", damping: 32, stiffness: 320 }}
-            animate={isFullScreen ? "fullscreen" : "floating"}
-            variants={chatVariants}
-            transition={{ type: "spring", damping: 32, stiffness: 320 }}
             className="fixed z-999 bg-[#0F172A] border border-white/10 shadow-2xl flex flex-col overflow-hidden text-white"
             style={{ fontFamily: "fangsong, serif" }}
         >

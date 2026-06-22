@@ -5,7 +5,7 @@ export const updateMonthlyRevenue = async () => {
     // Get current month in "YYYY-MM" format and label (e.g. "Jul")
     const now = new Date();
     const key = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
-    const lable = now.toLocaleString("en", { month: "short" });
+    const label = now.toLocaleString("en", { month: "short" });
 
     const planPrices = {
         Free: 0,
@@ -49,7 +49,7 @@ export const updateMonthlyRevenue = async () => {
     // Upsert the revenue document for the current month
     await Revenue.findOneAndUpdate(
         { month: key },
-        { month: key, label: lable, totalRevenue, breakdown, orgCounts },
+        { month: key, label: label, totalRevenue, breakdown, orgCounts },
         { upsert: true, new: true }
     );
 }

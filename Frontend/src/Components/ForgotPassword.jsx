@@ -49,7 +49,7 @@ const ForgotPassword = ({ isVisible, onClose }) => {
         e.preventDefault();
         
         // Basic client-side validation
-        if (otp.length !== 6) return setMessage({ text: "Enter valid 6-digit OTP", isSuccess: false });
+        if (otp.length !== 6 || !/^\d{6}$/.test(otp)) return setMessage({ text: "Enter valid 6-digit OTP", isSuccess: false });
         
         try {
             const result = await verifyOTP(email, otp);
