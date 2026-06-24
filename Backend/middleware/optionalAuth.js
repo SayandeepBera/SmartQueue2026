@@ -14,8 +14,6 @@ const optionalAuth = (req, res, next) => {
         req.userId    = decoded.user?.id   || null;
         req.userEmail = decoded.user?.email || null;
 
-        console.log("UserId from token:", req.userId);
-        console.log("UserEmail from token:", req.userEmail);
     } catch (_) {
         // Expired or invalid — proceed anonymously, never block
     }

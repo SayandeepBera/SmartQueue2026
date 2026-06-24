@@ -27,7 +27,7 @@ const reportSchema = new Schema({
         required: true,
     },
     submitterId: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
         index: true,
