@@ -76,7 +76,7 @@ const OrgAdminDashboard = () => {
     if (svcResult.success) {
       setServices(svcResult.services);
       if (svcResult.services.length === 0) { setLoading(false); return; }
-      const first = svcResult.services.find(s => s.isActive);
+      const first = svcResult.services.find(s => s.isActive) || svcResult.services[0];
       if (first) {
         const qResult = await getQueue(first._id);
         if (qResult.success) setQueue(qResult.queue);

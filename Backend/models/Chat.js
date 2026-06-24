@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 // Message model for individual chat messages
 const ChatMessageSchema = new Schema({
     conversationId: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "ChatConversation",
         required: true,
         index: true,

@@ -17,7 +17,7 @@ const imageAndDocSchema = new Schema({
 const organizationSchema = new Schema({
     // Linked auth user
     userId: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
         index: true
