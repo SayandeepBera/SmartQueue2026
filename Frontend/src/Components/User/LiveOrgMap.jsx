@@ -44,7 +44,7 @@ const LiveOrgMap = ({ onBookOrg }) => {
 
         fetchOrgs();
         return () => { cancelled = true; };
-    }, []);
+    }, [getMapOrgs]);
 
     const sel = orgs.find(o => o.id === active);
 

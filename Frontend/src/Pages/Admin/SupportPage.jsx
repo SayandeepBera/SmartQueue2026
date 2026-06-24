@@ -39,11 +39,11 @@ const SupportPage = () => {
 
         setStats({
             totalInquiries: inquiries.length,
-            openInquiries: inquiries.filter(i => i.status === "Open" || i.status === "open").length,
+            openInquiries: inquiries.filter(i => i.status?.toLowerCase() === "open").length,
             totalReports: reports.length,
-            openReports: reports.filter(r => r.status === "open" || r.status === "in_review").length,
-            activeChats: chats.filter(c => c.status === "open" || c.status === "in_progress").length,
-            resolvedChats: chats.filter(c => c.status === "resolved").length,
+            openReports: reports.filter(r => ["open", "in_review"].includes(r.status?.toLowerCase())).length,
+            activeChats: chats.filter(c => ["open", "in_progress"].includes(c.status?.toLowerCase())).length,
+            resolvedChats: chats.filter(c => c.status?.toLowerCase() === "resolved").length,
         });
         setLoading(false);
     }, [fetchInquiries, fetchAllChats, fetchAllReports]);
